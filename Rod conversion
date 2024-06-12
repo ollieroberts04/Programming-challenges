@@ -1,0 +1,28 @@
+def get_rods():
+    num_rods = float(input("Input rods: "))
+    print(f"You input {num_rods} rods.")
+    print()
+    return num_rods
+
+
+def get_conversions(num_rods):
+    conversions = {'meters': 5.0292,
+                   'feet': 5.0292 / 0.3048,
+                   'miles': 5.0292 / 1609.34,
+                   'furlongs': 0.025,
+                   f'minutes to walk {num_rods} rods': 5.0292 / 1609.34 / 3.1 * 60
+                  }
+    for conversion in conversions:
+        conversions[conversion] = num_rods * conversions[conversion]
+    return conversions
+
+
+def display(values):
+    print("Conversions")
+    for value in values:
+        print(f"{value.capitalize()}: {values[value]}")
+
+
+rods = get_rods()
+all_values = get_conversions(rods)
+display(all_values)
